@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AccessHub - Business</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 35px;
+      margin: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      max-width: 500px;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: 500;
+      color: #555;
+      display: block;
+      cursor: pointer;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      padding: 10px 12px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2575fc;
+      box-shadow: 0 0 10px rgba(37,117,252,0.2);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    /* Modern checkboxes */
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .checkbox-wrapper {
+      position: relative;
+      padding-left: 35px;
+      cursor: pointer;
+      font-size: 15px;
+      user-select: none;
+      color: #555;
+    }
+
+    .checkbox-wrapper input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 22px;
+      width: 22px;
+      background-color: #eee;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .checkbox-wrapper:hover input ~ .checkmark {
+      background-color: #d6e4ff;
+    }
+
+    .checkbox-wrapper input:checked ~ .checkmark {
+      background-color: #2575fc;
+    }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .checkbox-wrapper input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    .checkbox-wrapper .checkmark:after {
+      left: 8px;
+      top: 3px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      transform: rotate(45deg);
+    }
+
+    button {
+      padding: 12px 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 8px;
+      background: #2575fc;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #6a11cb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .action-buttons button {
+      flex: 1;
+      text-align: center;
+    }
+
+    hr {
+      margin: 25px 0;
+      border: none;
+      border-top: 1px solid #ddd;
+    }
+
+    @media screen and (max-width: 500px) {
+      .container {
+        padding: 20px;
+      }
+      .action-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Business Accessibility Form</h2>
+
+  <label>Place Name:</label>
+  <input type="text" id="placeName" placeholder="Enter place name">
+
+  <label>Place Type:</label>
+  <select id="placeType">
+    <option>Cafe</option>
+    <option>Restaurant</option>
+    <option>Library</option>
+    <option>Shop</option>
+    <option>Hospital</option>
+    <option>School</option>
+    <option>Mall</option>
+    <option>Other</option>
+  </select>
+
+  <div class="checkbox-group">
+    <label class="checkbox-wrapper">Ramp
+      <input type="checkbox" id="ramp">
+      <span class="checkmark"></span>
+    </label>
+    <label class="checkbox-wrapper">Wheelchair
+      <input type="checkbox" id="wheelchair">
+      <span class="checkmark"></span>
+    </label>
+    <label class="checkbox-wrapper">Toilet
+      <input type="checkbox" id="toilet">
+      <span class="checkmark"></span>
+    </label>
+    <label class="checkbox-wrapper">Braille
+      <input type="checkbox" id="braille">
+      <span class="checkmark"></span>
+    </label>
+  </div>
+
+  <label>Notes:</label>
+  <textarea id="notes" placeholder="Any extra details..."></textarea>
+
+  <button id="submitBusinessBtn">Submit</button>
+
+  <hr>
+
+  <div class="action-buttons">
+    <button onclick="window.location.href='gemini.html'">✨ View AI Suggestions</button>
+    <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
+  </div>
+</div>
+
+<script type="module" src="../src/business.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Body and container */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    }
+
+    /* Logo */
+    .logo {
+      display: block;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px auto;
+      object-fit: contain;
+    }
+
+    /* Headings */
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    /* Inputs and select */
+    input, select {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #2575fc;
+      box-shadow: 0 0 8px rgba(37,117,252,0.3);
+    }
+
+    /* Buttons */
+    button {
+      width: 100%;
+      padding: 12px 0;
+      margin: 15px 0;
+      border: none;
+      border-radius: 8px;
+      background: #2575fc;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #6a11cb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Links */
+    p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    p a {
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    p a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Optional logo -->
+  <img src="AccessHUB.png" alt="AccessHub Logo" class="logo">
+
+  <h2>Sign Up</h2>
+
+  <input type="text" id="name" placeholder="Full Name">
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+
+  <select id="role">
+    <option value="user">User</option>
+    <option value="business">Business</option>
+  </select>
+
+  <button id="signupBtn">Sign Up</button>
+
+  <p>
+    Already have an account?
+    <a href="login.html">Login</a>
+  </p>
+</div>
+
+<script type="module">
+  import { signup, redirectUser } from "../src/auth.js";
+
+  document.getElementById("signupBtn").onclick = async () => {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
+
+    if (!name || !email || !password) {
+      alert("Fill all fields");
+      return;
+    }
+
+    try {
+      const user = await signup(email, password, role, name);
+      await redirectUser(user); // user → map.html, business → business.html
+    } catch (error) {
+      if (error.code === "auth/email-already-in-use") {
+        alert("This email is already registered. Please login.");
+      } else {
+        console.error(error);
+        alert("Error signing up. Check console.");
+      }
+    }
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gemini AI Suggestions</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #333;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    #suggestionsContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .suggestion-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .suggestion-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .suggestion-card h3 {
+      margin: 0 0 10px 0;
+      color: #2575fc;
+      font-size: 20px;
+    }
+
+    .suggestion-card ul {
+      padding-left: 20px;
+      margin: 0;
+      color: #555;
+    }
+
+    .suggestion-card ul li {
+      margin-bottom: 8px;
+    }
+
+    .suggestion-card small {
+      display: block;
+      margin-top: 10px;
+      color: #888;
+      font-style: italic;
+      font-size: 13px;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin: 25px 0;
+      border: none;
+      border-radius: 8px;
+      background: #2575fc;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #6a11cb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media screen and (max-width: 500px) {
+      #suggestionsContainer {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>AI Accessibility Suggestions</h2>
+
+  <div id="suggestionsContainer"></div>
+
+  <button onclick="window.location.href='business.html'">
+    ⬅ Back to Business Page
+  </button>
+
+  <script type="module" src="../src/gemini.js"></script>
+
+</body>
+</html>

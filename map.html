@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AccessHub - Map</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f6fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 30px;
+      color: #333;
+      font-size: 28px;
+    }
+
+    /* Search Input */
+    #searchInput {
+      width: 300px;
+      padding: 10px 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    #searchInput:focus {
+      border-color: #2575fc;
+      box-shadow: 0 0 10px rgba(37,117,252,0.3);
+    }
+
+    /* Map */
+    #map {
+      height: 75vh;
+      width: 90vw;
+      max-width: 1200px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Buttons */
+    button {
+      padding: 12px 25px;
+      background: #2575fc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    button:hover {
+      background: #6a11cb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 500px) {
+      #searchInput {
+        width: 90%;
+      }
+
+      #map {
+        width: 95vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>User Map View</h2>
+
+  <input type="text" id="searchInput" placeholder="Search places...">
+  <div id="map"></div>
+
+  <div style="text-align:center;">
+    <button onclick="window.location.href='index.html'">Logout</button>
+  </div>
+
+  <!-- Google Maps JS -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlyIu4Q8WocrAMk4_YUozFOIUw3Bop6oA"></script>
+  <script type="module" src="../src/map.js"></script>
+
+</body>
+</html>
